@@ -3,7 +3,7 @@ const cashGiven = document.querySelector("#cash-given");
 const checkButton = document.querySelector("#check-button");
 const message = document.querySelector("#error-message");
 const noOfNotes = document.querySelectorAll(".no-of-notes");
-const availableNotes = [2000,500,100,20,5,1]
+const availableNotes = [2000,500,100,20,10,5,1];
 checkButton.addEventListener("click", function validateBillAndCashAmount() {
     hideMessage();
 
@@ -25,10 +25,8 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
 
 function calculateChange(amountToBereturned) {
 for(let i =0; i<availableNotes.length;i++){
-    const numberOfNotes = Math.trunc(
-        amountToBereturned / availableNotes[i]
-    );
-    amountToBereturned %=  availableNotes[i];
+    const numberOfNotes = Math.trunc(amountToBereturned / availableNotes[i]);
+    amountToBereturned =  amountToBereturned % availableNotes[i];
     noOfNotes[i].innerText = numberOfNotes;
 }
 
